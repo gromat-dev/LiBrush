@@ -2,11 +2,10 @@
   "name": "librush",
   "version": "1.0.0",
   "description": "Librus Clone",
-  "main": "index.js",
-  "proxy": "http://localhost:7070",
-  "homepage": "./server",
+  "main": "src/index.js",
+  "type": "module",
   "scripts": {
-    "start": "node server/index.js"
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
