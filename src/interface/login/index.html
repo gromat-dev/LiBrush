@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>LiBrush - Zaloguj się</title>
+	<link href="login.css" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+<div class="container">
+	<div class="form-container sign-in-container">
+		<form action="#">
+			<h1>Zaloguj się</h1>
+			<div class="social-container">
+				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+				<a href="#" class="social"><i class="fab fa-google"></i></a>
+			</div>
+			<span>lub użyj adresu email</span>
+			<input type="email" placeholder="Email" />
+			<input type="password" placeholder="Password" />
+			<a href="#">Resetowanie hasła</a>
+            <div id="login-captcha"></div>
+			<button>Zaloguj się</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-right">
+				<h1>LiBrush</h1>
+				<p>Znajdź nasz projekt na GitHubie</p>
+				<a href="https://github.com/gromat-dev/LiBrush" class="github">Sprawdź</a>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="login.js" async defer></script>
+</body>
+</html>
