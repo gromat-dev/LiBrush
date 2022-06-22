@@ -170,3 +170,9 @@ input {
 	height: 40px;
 	width: 40px;
 }
+.disabled{
+	background-color: grey!important;
+    border-color: grey!important;
+	cursor: default!important;
+	transform: scale(1)!important;
+}
