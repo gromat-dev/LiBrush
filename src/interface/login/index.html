@@ -17,15 +17,15 @@
 		<form action="#">
 			<h1>Zaloguj się</h1>
 			<div class="social-container">
-				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-				<a href="#" class="social"><i class="fab fa-google"></i></a>
+				<a href="#" class="social" id="fbLogin"><i class="fab fa-facebook-f"></i></a>
+				<a href="#" class="social" id="googleLogin"><i class="fab fa-google"></i></a>
 			</div>
 			<span>lub użyj adresu email</span>
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
+			<input type="email" placeholder="Email" id="loginEmail" />
+			<input type="password" placeholder="Password" id="loginPassword" />
 			<a href="#">Resetowanie hasła</a>
             <div id="login-captcha"></div>
-			<button>Zaloguj się</button>
+			<button class="disabled" id="loginButton">Zaloguj się</button>
 		</form>
 	</div>
 	<div class="overlay-container">
@@ -38,6 +38,7 @@
 		</div>
 	</div>
 </div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v14.0&appId=3201016870185750&autoLogAppEvents=1" nonce="8Bgqcm5g"></script>
 <script src="login.js" async defer></script>
 </body>
 </html>
