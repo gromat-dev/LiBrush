@@ -9,18 +9,25 @@ const PORT = 7070
 
 const app = express()
 
-app.use(function (req, res, next) {
+//report if server is working
+app.listen(PORT, () => {
+  console.log(`Server listening on ${PORT}`)
+});
+
+//login route CSP
+app.use('/login',function (req, res, next) {
   res.setHeader(
     'Content-Security-Policy',
-    "default-src 'self' https://cdn.jsdelivr.net https://fonts.googleapis.com; style-src *; font-src *; script-src 'self' https://code.jquery.com https://cdn.jsdelivr.net https://www.google.com https://www.gstatic.com; frame-src https://www.google.com/"
+    "default-src 'self' https://cdn.jsdelivr.net https://fonts.googleapis.com https://www.facebook.com/; style-src * 'unsafe-inline'; font-src *; script-src 'self' 'unsafe-inline' https://code.jquery.com https://cdn.jsdelivr.net https://www.google.com https://www.gstatic.com https://*.facebook.net/; frame-src https://www.google.com/ https://connect.facebook.net/;"
   )
   next()
 })
 
-app.use('/', express.static(path.join(__dirname, '/interface')))
+//v1 API JSON middleware
+app.use("/api/v1/*",express.json())
 
+//API routes
 app.post("/api/v1/login", login)
 
-app.listen(PORT, () => {
-  console.log(`Server listening on ${PORT}`)
-});
+//fallback route to interface
+app.use('/', express.static(path.join(__dirname, '/interface')))
