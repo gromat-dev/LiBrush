@@ -1,10 +1,13 @@
+import { config } from 'dotenv'
 import path, { dirname } from 'path'
 import { fileURLToPath } from 'url'
-import express from "express"
-import login from "./api/v1/login.js"
+import express from 'express'
+import bodyParser from 'body-parser'
+import session from 'express-session'
+import passport from 'passport'
+import initializePassport from './modules/login/passport-config.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-
 const PORT = 7070
 
 const app = express()
@@ -13,6 +16,8 @@ const app = express()
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`)
 });
+
+initializePassport(passport)
 
 //login route CSP
 app.use('/login',function (req, res, next) {
@@ -23,11 +28,27 @@ app.use('/login',function (req, res, next) {
   next()
 })
 
+config() //dotenv config, only dev
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false
+}))
+
+app.use(passport.initialize())
+app.use(passport.session())
+
 //v1 API JSON middleware
-app.use("/api/v1/*",express.json())
+app.use("/api/v1/*", express.json())
+app.use("/api/v1/*", bodyParser.urlencoded({
+  extended: true
+}))
+
 
 //API routes
-app.post("/api/v1/login", login)
+app.post("/api/v1/login", passport.authenticate('custom'), function(req, res) {
+  res.json({status: 'success'})
+})
 
 //fallback route to interface
 app.use('/', express.static(path.join(__dirname, '/interface')))
