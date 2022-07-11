@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "devstart": "npx nodemon"
   },
   "repository": {
     "type": "git",
@@ -18,11 +19,17 @@
     "url": "https://github.com/gromat-dev/LiBrush/issues"
   },
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
-    "dotenv": "^16.0.1",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "passport": "^0.6.0",
+    "passport-custom": "^1.1.1",
+    "pg": "^8.7.3",
+    "reload": "^3.2.0"
   },
   "devDependencies": {
+    "dotenv": "^16.0.1",
     "nodemon": "^2.0.16"
   }
 }
