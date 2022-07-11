@@ -87,13 +87,12 @@ function login(mode = 0, params) {
             }
             break
     }
-    $.post( '/api/v1/1login', payload).done((data)=>{
+    $.post( '/api/v1/login', payload).done((data)=>{
         expireCaptcha()
         console.log(data)
-        data = JSON.parse(data)
         switch (data['status']) {
             case 'success':
-                window.location.href = '/panel'
+                // window.location.href = '/panel'
                 break
             case 'captcha error':
                 console.log("CAPTCHA ERROR")
